@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Push"
+  short_description: "Prepare and verify GitHub SSH push setup."
+  default_prompt: "Use $git-push to configure Git identity, verify GitHub SSH access, and push this repository safely."
