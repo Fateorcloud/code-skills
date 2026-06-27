@@ -13,7 +13,7 @@
 | [`CONTEXT.md`](CONTEXT.md) | 本工具箱的领域术语字典 |
 | `.claude/skills/` | 6 个技能：`/spec-init` `/grill-me` `/grill-with-docs` `/adr` `/spec-sync` `/spec-check` |
 | `toolkit/` | 4 个模板 + `spec-init.sh` 一键脚手架 |
-| `docs/adr/` | 这套体系自身的架构决策（`0001`、`0002`） |
+| `docs/adr/` | 这套体系自身的架构决策 |
 
 ## 🤖 在本仓库协作的规矩
 
