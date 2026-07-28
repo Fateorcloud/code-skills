@@ -116,7 +116,7 @@ docs/
 - junction 是 **Windows 专有**。上 macOS / Linux 需给 `install.ps1` 补 symlink 分支。
 - git 把 junction 当**真实目录**（记为 `100644`，非 symlink 的 `120000`），所以项目侧安装必须 gitignore 借用来的技能，否则内容会被复制进项目仓库。`install.ps1` 自动维护这个块。
 - 递归删除工具可能穿透 junction 删到源。本脚本删链接用 `Directory.Delete($p, $false)`，安全；但别用别的工具递归删 `~/.claude/skills/<name>`。
-- **Cursor 未接入**——它有自己的 `.sync-manifest.json` 托管逻辑，硬链进去可能被清理。
+- **Cursor 有意不接入**——它用 `~/.cursor/skills-cursor` 并自带 `.sync-manifest.json` 托管同步，硬链进去可能被它的托管逻辑清理。Cursor 侧的技能由它自己管，不纳入本库。
 - `toolkit/` 模板与各 `SKILL.md` 内联的格式要点是**两处**，改模板要记得同步技能。
 
 ---
