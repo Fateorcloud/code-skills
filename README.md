@@ -89,39 +89,40 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 .\tools\gen-readme.ps1 -Check               # 校验 README 是否已同步（CI 用）
 ```
 
-## 加一个技能：一条命令
+## 加一个技能
+
+**记一条命令就够：**
 
 ```powershell
-# 1) 自己新写一个（生成骨架 + 入册 + 安装 + 刷 README）
-.\tools\add-skill.ps1 -Name my-skill -Category vcs
-
-# 2) 导入下载来的（从任意路径搬进库，其余同上）
-.\tools\add-skill.ps1 -Import D:\Downloads\cool-skill -Category thinking
-
-# 3) 项目专属（土生，不进公共库，直接在项目里建目录）
-.\tools\add-skill.ps1 -Name deploy-thing -Project E:\Code_file\my-proj
+.\add.ps1
 ```
 
-前两种会自动写 `registry.json`、junction 到各 agent、刷新上面的技能总表，**你不需要手改任何配置文件**。之后只剩一件事：把 `SKILL.md` 的 `description` 写准。
+它会问你两三个问题（叫什么 / 放哪一层 / 归哪类），然后自动建目录、写 `registry.json`、junction 到各 agent、刷新上面的技能总表。**你不需要手改任何配置文件。**
 
-`description` 是模型选对技能的**唯一**依据，写法：
+想省一步就把名字或路径直接跟上：
+
+```powershell
+.\add.ps1 my-skill            # 自己新写一个
+.\add.ps1 D:\Downloads\cool   # 下载来的（是路径就自动识别为导入）
+```
+
+之后**只剩一件事**：把 `SKILL.md` 的 `description` 写准。它是模型选对技能的唯一依据：
 
 > 做什么 + 何时用（含用户会说的字面触发词）+ 与哪个技能易混就写明何时**不**用、该用哪个
 
 改完直接生效，不用重装（junction 写穿）。
 
-### 判断放哪一层
+> 导入时会问来源，填了就记进 `registry.json` 的 `source`。跳过也行，但以后你就查不到它哪来的了——这正是历史遗留技能说不清出处的原因。
 
-```
-这个技能里有没有写死某个项目的路径 / 仓库名 / 领域词？
-├─ 有  → 项目·土生     -Project <项目路径>          （不进公共库）
-└─ 没有
-    └─ 每个项目都可能用到吗？
-        ├─ 是 → 全局    -Category <分类>             （默认）
-        └─ 否 → 项目·借用 -Category <分类> -Scope project
-                          需要时再 install.ps1 -Scope project -Path <项目> -Only <名>
-```
+<details>
+<summary>脚本化用法（不想被问，直接给全参数）</summary>
 
+```powershell
+.\tools\add-skill.ps1 -Name my-skill -Category vcs
+.\tools\add-skill.ps1 -Import D:\Downloads\cool -Category thinking -Source https://github.com/x/y
+.\tools\add-skill.ps1 -Name deploy-thing -Project E:\Code_file\my-proj
+```
+</details>
 
 ## 仓库结构
 

@@ -19,6 +19,7 @@ param(
   [string] $Category,
   [ValidateSet('global','project')] [string] $Scope = 'global',
   [string[]] $Targets = @('claude','codex'),
+  [string] $Source,
   [string] $Project
 )
 
@@ -134,6 +135,8 @@ if (-not $reg.categories.PSObject.Properties.Name.Contains($Category)) {
 }
 
 $entry = [ordered]@{ category = $Category; scope = $Scope; targets = $Targets }
+if ($Source)  { $entry.source = $Source }
+elseif ($Import) { $entry.source = "imported from $Import (来源未记录)" }
 $reg.skills | Add-Member -NotePropertyName $skillName -NotePropertyValue ([pscustomobject]$entry) -Force
 Save-Registry $reg
 Write-Host "registry.json 已加条目：$skillName ($Category / $Scope / $($Targets -join ','))" -ForegroundColor Green
