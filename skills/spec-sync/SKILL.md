@@ -17,7 +17,7 @@ description: 文档漂移后的兜底追平工具。首选是开发/拷问时内
 
 | 改动 | 更新目标 |
 |------|---------|
-| 新术语 | `CONTEXT.md`（按 `toolkit/CONTEXT.template.md` 格式，含 `_Avoid_`；只放项目特有术语，不放实现细节） |
+| 新术语 | `CONTEXT.md` 的 `## Language`：`**词**:` + 1-2 句定义（定义"是什么"不是"做什么"）+ `_Avoid_:` 同义词；只放项目特有术语，不放实现细节 |
 | 接口变更 | 对应 `docs/modules/XXX.md`（若存在） |
 | 架构决策 | 触发 `/adr`（先过"难逆+反直觉+真权衡"三条） |
 | 任务完成 | `docs/PROJECT_STATUS.md`（若存在） |

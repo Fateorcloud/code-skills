@@ -1,6 +1,6 @@
 ---
 name: spec-init
-description: 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。
+description: 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。
 ---
 
 # spec-init — 项目文档骨架初始化
@@ -19,16 +19,20 @@ description: 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE
 
 ### 2. 生成文件（懒创建——只建有内容可写的）
 
-**`CONTEXT.md`** — 按 `toolkit/CONTEXT.template.md` 格式：
+**`CONTEXT.md`** — 格式：
 - `# 上下文名` + 一两句说明
 - `## Language`：每个术语 `**词**:` + 定义（定义"是什么"不是"做什么"，1-2 句）+ `_Avoid_:` 同义词
 - **要有主见**：多个词选最佳的，其余进 `_Avoid_`
 - **只放项目特有术语**，通用编程概念（超时、错误类型）不收
 - `## Relationships`：术语间关系
 
-**`CLAUDE.md`** — 参考 `toolkit/CLAUDE.template.md`：文档体系 + 何时读哪个 + 何时用哪个技能。
+**`CLAUDE.md`**（Codex/Cursor 等写 `AGENTS.md`，内容相同）— 四段：
+1. `# 项目名` + 一句话简介
+2. **文档体系**（表格，注明"按需阅读，不要全读"）：`CONTEXT.md` → 每次开发前查术语；`docs/adr/` → 想知道"为什么这样设计"时；`docs/modules/XXX.md` → 改该模块前（若存在）
+3. **工作流程**：普通功能 → 读 `CONTEXT.md` 用一致命名；复杂/敏感模块 → 按 `docs/modules/XXX.md`；遇新术语 → `/grill-me`；做了架构决策 → `/adr`；改完代码 → `/spec-sync`。附"何时才为模块写详细文档"：涉及安全/支付敏感数据/多步骤复杂逻辑/AI 反复理解错，满足任一才写
+4. **开发速查**：语言框架、代码风格、测试命令、分支与提交格式
 
-**`docs/adr/0001-tech-stack.md`** — **仅当**技术选型满足"难逆 + 反直觉 + 真权衡"才建；格式见 `toolkit/ADR.template.md`（默认 1-3 句，四位数编号）。否则先不建。
+**`docs/adr/0001-tech-stack.md`** — **仅当**技术选型满足"难逆 + 反直觉 + 真权衡"才建；默认 1-3 句、四位数编号（扫描现有取最大号 +1）。否则先不建。
 
 ### 3. 报告 + 指下一步
 

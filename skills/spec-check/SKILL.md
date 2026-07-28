@@ -10,11 +10,11 @@ description: 体检文档体系，找出过时、缺失、矛盾的地方。当�
 ## 步骤
 
 ### 1. 清点
-检查核心文件是否存在：`CLAUDE.md`、`CONTEXT.md`（或 `CONTEXT-MAP.md`）、`docs/adr/`。列出存在与缺失。
+检查核心文件是否存在：`CLAUDE.md`（Codex / Cursor 等工具为 `AGENTS.md`）、`CONTEXT.md`（或 `CONTEXT-MAP.md`）、`docs/adr/`。列出存在与缺失。
 
 ### 2. 逐项检查
 
-**CLAUDE.md**
+**CLAUDE.md / AGENTS.md**
 - 导航链接指向的文件是否真实存在？（死链 = 问题）
 - 是否说明了"何时读哪个文档 / 用哪个技能"？
 
