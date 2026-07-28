@@ -20,9 +20,9 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 <!-- BEGIN:SKILLS -->
 > 本节由 `tools/gen-readme.ps1` 从 `registry.json` 生成，请勿手改。
 
-共 **10** 个技能。作用域 `global` = 装进 `~/.claude/skills` 与 `~/.codex/skills`；`project` = 按需装进单个项目。
+共 **16** 个技能。作用域 `global` = 装进 `~/.claude/skills` 与 `~/.codex/skills`；`project` = 按需装进单个项目。
 
-### `docs-spec` — 文档体系：术语表 + 决策记录 + 规范同步
+### `spec-docs` — 文档体系：术语表 + 决策记录 + 规范同步
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
@@ -31,31 +31,47 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 | `/spec-init` | global | claude, codex | 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。 |
 | `/spec-sync` | global | claude, codex | 文档漂移后的兜底追平工具。首选是开发/拷问时内联更新（见 /grill-with-docs）；当你没内联、代码已先行、文档落后了，用本技能把文档追平。 |
 
-### `thinking` — 方案压测：拷问、决策树推进
+### `thinking` — 想清楚：拷问方案、原型验证
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
 | `/grill-me` | global | claude, codex | 就一个计划或设计反复盘问用户，沿决策树逐个解决依赖，直到达成共识。用户想压测方案、想"被拷问"、说"grill me"时使用。 |
 | `/grill-with-docs` | global | claude, codex | 一边拷问方案、一边对照项目既有领域模型与已记录的决策，磨锐术语，并在决策定型的当下内联更新文档（CONTEXT.md、ADR）。用户想用项目自己的语言和已记录决策来压测方案时使用。 |
+| `/prototype` | global | claude, codex | Build a throwaway prototype to flesh out a design before committing to it. Routes between two branches — a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route. Use when the user wants to prototype, sanity-check a data model or state machine, mock up a UI, explore design options, or says "prototype this", "let me play with it", "try a few designs". |
 
-### `continuity` — 跨进程对话记忆接力
+### `coding` — 写码方法论
+
+| 技能 | 作用域 | 目标 | 说明 |
+|------|--------|------|------|
+| `/tdd` | global | claude, codex | Test-driven development with red-green-refactor loop. Use when user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development. |
+
+### `architecture` — 架构设计与重构
+
+| 技能 | 作用域 | 目标 | 说明 |
+|------|--------|------|------|
+| `/improve-codebase-architecture` | global | claude, codex | Find deepening opportunities in a codebase, informed by the domain language in CONTEXT.md and the decisions in docs/adr/. Use when the user wants to improve architecture, find refactoring opportunities, consolidate tightly-coupled modules, or make a codebase more testable and AI-navigable. |
+| `/project-architecture-first` | project | claude, codex | use this skill when acting as codex or a coding agent for medium or large software projects, rewrites, refactors, migrations, documentation-heavy builds, or ambiguous feature requests. triggers include requests to start a project, reorganize a repository, split modules, define interfaces, plan implementation, manage shared state, write project docs, or make multi-step code changes. enforce architecture-first planning before implementation: define modules, interfaces, state ownership, test checkpoints, and change reports so each step is reviewable, executable, reversible, and easy for ai agents to continue. |
+
+### `vcs` — 版本控制与仓库工程化
+
+| 技能 | 作用域 | 目标 | 说明 |
+|------|--------|------|------|
+| `/git-guardrails-claude-code` | global | claude, codex | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code. |
+| `/git-push` | global | claude, codex | Use this skill when preparing, verifying, or troubleshooting Git pushes to GitHub over SSH, especially for first-time repository push setup, global Git identity checks, SSH key creation or validation, GitHub SSH key binding, remote URL checks, commit readiness, and safe push commands. |
+| `/setup-pre-commit` | global | claude, codex | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/typechecking/testing. |
+
+### `continuity` — 跨会话记忆接力
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
 | `/mem-load` | global | claude, codex | 新对话开工时，读取本项目 .agent-memory/ 里其它进程归档的对话记忆并接手。当用户说"新对话接手""继续上次""读取记忆""load 归档""换个进程继续做"时使用。 |
 | `/mem-save` | global | claude, codex | 压缩/总结当前对话并归档进本项目 .agent-memory/，供其它进程的新对话接手。当用户说"压缩""总结存档""归档这段对话""要开新对话接力""token 太高了存一下"时使用。 |
 
-### `vcs` — 版本控制与推送
+### `writing` — 文字打磨
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
-| `/git-push` | global | claude, codex | Use this skill when preparing, verifying, or troubleshooting Git pushes to GitHub over SSH, especially for first-time repository push setup, global Git identity checks, SSH key creation or validation, GitHub SSH key binding, remote URL checks, commit readiness, and safe push commands. |
-
-### `architecture` — 架构先行的项目脚手架
-
-| 技能 | 作用域 | 目标 | 说明 |
-|------|--------|------|------|
-| `/project-architecture-first` | project | claude, codex | use this skill when acting as codex or a coding agent for medium or large software projects, rewrites, refactors, migrations, documentation-heavy builds, or ambiguous feature requests. triggers include requests to start a project, reorganize a repository, split modules, define interfaces, plan implementation, manage shared state, write project docs, or make multi-step code changes. enforce architecture-first planning before implementation: define modules, interfaces, state ownership, test checkpoints, and change reports so each step is reviewable, executable, reversible, and easy for ai agents to continue. |
+| `/avoid-ai-writing` | global | claude, codex | Audit and rewrite content to remove AI writing patterns ("AI-isms"). Use this skill when asked to "remove AI-isms," "clean up AI writing," "edit writing for AI patterns," "audit writing for AI tells," or "make this sound less like AI." Supports a detect-only mode, an edit-in-place mode for files, an optional voice profile (casual / professional / technical / warm / blunt), and an iterate-to-convergence pass. |
 <!-- END:SKILLS -->
 
 ## 技能放在哪一层
@@ -70,7 +86,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 
 **一句话判据：技能里出现了某项目专有的路径、仓库名或领域词 → 土生，不进本库。**
 
-例：`ai-architect-lab-git-records` 写死 `D:\pbzhang\ai_api`、`scts-ai-rate-revision` 绑定特定期刊——都属土生，应活在各自项目里。
+例：`ai-architect-lab-git-records` 写死 `D:\pbzhang\ai_api`（已下沉）、`volans-notes-*` 绑定 Volans 站点的 `/architecture/`、`/deployment/` 路径（已下沉）——都属土生，活在各自项目里。
 
 **晋升路径**：项目土生技能日后发现通用 → 移进本库 `skills/` → registry 加一行 → junction 回项目原位。项目侧用法不变，源已进库，其它项目立刻可借。
 
@@ -83,7 +99,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 .\install.ps1 -Scope global                 # 全局装/重装
 .\install.ps1 -Sync                         # git pull + 补新增 junction + 清死链
 .\install.ps1 -Scope global -Only adr       # 只装某一个
-.\install.ps1 -Scope project -Path E:\proj -Category docs-spec   # 给项目按分类装
+.\install.ps1 -Scope project -Path E:\proj -Category spec-docs    # 给项目按分类装
 .\install.ps1 -Scope global -Only adr -Uninstall                 # 摘掉（只删链接，源安全）
 .\tools\gen-readme.ps1                      # 从 registry 重新生成上面的技能总表
 .\tools\gen-readme.ps1 -Check               # 校验 README 是否已同步（CI 用）
@@ -127,8 +143,8 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 ## 仓库结构
 
 ```
-skills/            10 个技能，平铺（agent 的技能目录本身是平的，不认嵌套）
-registry.json      清单：归类 / 作用域 / 分发目标
+skills/            16 个技能，平铺（agent 的技能目录本身是平的，不认嵌套）
+registry.json      清单：归类 / 作用域 / 分发目标 / 来源
 install.ps1        junction 分发器
 tools/             README 生成器等
 toolkit/           给人用的模板（技能已不依赖，见 toolkit/README.md）
