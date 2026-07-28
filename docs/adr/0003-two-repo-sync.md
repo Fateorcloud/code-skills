@@ -1,6 +1,9 @@
 # 工具箱用「开发源 + 发布镜像」两库，手动同步
 
-**Status:** accepted
+**Status:** superseded by [0004](0004-single-source-junction.md)（2026-07-28）
+
+> ⚠️ 本决策已废止。两库制的前提（`AI_Spec` 带开发态杂物）实测不成立，且真相源无版本控制。
+> 下文「看到两份别去修正成单份」的约定**同时失效**——现在看到两份就是 bug。保留全文仅为记录当时的权衡。
 
 工具箱有两个仓库：开发源 `AI_Spec`（本地）和发布镜像 `code-skills/Spec-skill/`（公开）。共享文件（`CLAUDE`/`AGENTS`/`CONTEXT`/`使用方案`/`.claude/skills`/`toolkit`/`docs/adr`）以 `AI_Spec` 为真相源，改完 `cp` 到 clone 再 push 保持逐字一致；**唯一有意分叉的是 `README.md`**——本地是"指向发布版"的指针，公开是面向 clone 用户的实战门面。
 

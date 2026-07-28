@@ -1,0 +1,13 @@
+# 统一换行符：根治 repo 与各 agent 目录之间的伪漂移
+* text=auto eol=lf
+
+*.md   text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.sh   text eol=lf
+
+# Windows 脚本必须是 CRLF
+*.ps1  text eol=crlf
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
