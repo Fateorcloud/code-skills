@@ -1,73 +1,103 @@
 {
-  "version": 1,
-  "repo": "https://github.com/Fateorcloud/code-skills",
-  "categories": {
-    "docs-spec": "文档体系：术语表 + 决策记录 + 规范同步",
-    "thinking": "方案压测：拷问、决策树推进",
-    "continuity": "跨进程对话记忆接力",
-    "vcs": "版本控制与推送",
-    "architecture": "架构先行的项目脚手架"
-  },
-  "skills": {
-    "spec-init": {
-      "category": "docs-spec",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding"
-    },
-    "spec-check": {
-      "category": "docs-spec",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding"
-    },
-    "spec-sync": {
-      "category": "docs-spec",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding"
-    },
-    "adr": {
-      "category": "docs-spec",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding"
-    },
-    "grill-me": {
-      "category": "thinking",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding",
-      "note": "中文版为准；Codex 侧曾存在同名英文第三方版，安装时会被覆盖"
-    },
-    "grill-with-docs": {
-      "category": "thinking",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "spec-coding",
-      "note": "中文版为准；同上"
-    },
-    "mem-save": {
-      "category": "continuity",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "session-memory"
-    },
-    "mem-load": {
-      "category": "continuity",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "bundle": "session-memory"
-    },
-    "git-push": {
-      "category": "vcs",
-      "scope": "global",
-      "targets": ["claude", "codex"]
-    },
-    "project-architecture-first": {
-      "category": "architecture",
-      "scope": "project",
-      "targets": ["claude", "codex"]
-    }
-  }
+    "version":  1,
+    "repo":  "https://github.com/Fateorcloud/code-skills",
+    "categories":  {
+                       "docs-spec":  "文档体系：术语表 + 决策记录 + 规范同步",
+                       "thinking":  "方案压测：拷问、决策树推进",
+                       "continuity":  "跨进程对话记忆接力",
+                       "vcs":  "版本控制与推送",
+                       "architecture":  "架构先行的项目脚手架"
+                   },
+    "skills":  {
+                   "spec-init":  {
+                                     "category":  "docs-spec",
+                                     "scope":  "global",
+                                     "targets":  [
+                                                     "claude",
+                                                     "codex"
+                                                 ],
+                                     "bundle":  "spec-coding"
+                                 },
+                   "spec-check":  {
+                                      "category":  "docs-spec",
+                                      "scope":  "global",
+                                      "targets":  [
+                                                      "claude",
+                                                      "codex"
+                                                  ],
+                                      "bundle":  "spec-coding"
+                                  },
+                   "spec-sync":  {
+                                     "category":  "docs-spec",
+                                     "scope":  "global",
+                                     "targets":  [
+                                                     "claude",
+                                                     "codex"
+                                                 ],
+                                     "bundle":  "spec-coding"
+                                 },
+                   "adr":  {
+                               "category":  "docs-spec",
+                               "scope":  "global",
+                               "targets":  [
+                                               "claude",
+                                               "codex"
+                                           ],
+                               "bundle":  "spec-coding"
+                           },
+                   "grill-me":  {
+                                    "category":  "thinking",
+                                    "scope":  "global",
+                                    "targets":  [
+                                                    "claude",
+                                                    "codex"
+                                                ],
+                                    "bundle":  "spec-coding",
+                                    "note":  "中文版为准；Codex 侧曾存在同名英文第三方版，安装时会被覆盖"
+                                },
+                   "grill-with-docs":  {
+                                           "category":  "thinking",
+                                           "scope":  "global",
+                                           "targets":  [
+                                                           "claude",
+                                                           "codex"
+                                                       ],
+                                           "bundle":  "spec-coding",
+                                           "note":  "中文版为准；同上"
+                                       },
+                   "mem-save":  {
+                                    "category":  "continuity",
+                                    "scope":  "global",
+                                    "targets":  [
+                                                    "claude",
+                                                    "codex"
+                                                ],
+                                    "bundle":  "session-memory"
+                                },
+                   "mem-load":  {
+                                    "category":  "continuity",
+                                    "scope":  "global",
+                                    "targets":  [
+                                                    "claude",
+                                                    "codex"
+                                                ],
+                                    "bundle":  "session-memory"
+                                },
+                   "git-push":  {
+                                    "category":  "vcs",
+                                    "scope":  "global",
+                                    "targets":  [
+                                                    "claude",
+                                                    "codex"
+                                                ]
+                                },
+                   "project-architecture-first":  {
+                                                      "category":  "architecture",
+                                                      "scope":  "project",
+                                                      "targets":  [
+                                                                      "claude",
+                                                                      "codex"
+                                                                  ]
+                                                  }
+               }
 }

@@ -89,12 +89,39 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 .\tools\gen-readme.ps1 -Check               # 校验 README 是否已同步（CI 用）
 ```
 
-## 加一个技能
+## 加一个技能：一条命令
 
-1. `skills/<name>/SKILL.md`——frontmatter 必须有 `name` 和 `description`。
-2. `description` 写「做什么 + 何时用（含字面触发词）」，与既有技能重叠时补一句何时**不**用、该用哪个。这是模型选对技能的唯一依据。
-3. `registry.json` 加一条：`category` / `scope` / `targets`。
-4. `.\install.ps1 -Scope global` + `.\tools\gen-readme.ps1`。
+```powershell
+# 1) 自己新写一个（生成骨架 + 入册 + 安装 + 刷 README）
+.\tools\add-skill.ps1 -Name my-skill -Category vcs
+
+# 2) 导入下载来的（从任意路径搬进库，其余同上）
+.\tools\add-skill.ps1 -Import D:\Downloads\cool-skill -Category thinking
+
+# 3) 项目专属（土生，不进公共库，直接在项目里建目录）
+.\tools\add-skill.ps1 -Name deploy-thing -Project E:\Code_file\my-proj
+```
+
+前两种会自动写 `registry.json`、junction 到各 agent、刷新上面的技能总表，**你不需要手改任何配置文件**。之后只剩一件事：把 `SKILL.md` 的 `description` 写准。
+
+`description` 是模型选对技能的**唯一**依据，写法：
+
+> 做什么 + 何时用（含用户会说的字面触发词）+ 与哪个技能易混就写明何时**不**用、该用哪个
+
+改完直接生效，不用重装（junction 写穿）。
+
+### 判断放哪一层
+
+```
+这个技能里有没有写死某个项目的路径 / 仓库名 / 领域词？
+├─ 有  → 项目·土生     -Project <项目路径>          （不进公共库）
+└─ 没有
+    └─ 每个项目都可能用到吗？
+        ├─ 是 → 全局    -Category <分类>             （默认）
+        └─ 否 → 项目·借用 -Category <分类> -Scope project
+                          需要时再 install.ps1 -Scope project -Path <项目> -Only <名>
+```
+
 
 ## 仓库结构
 
