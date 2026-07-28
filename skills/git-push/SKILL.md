@@ -39,12 +39,14 @@ git config --global user.name
 git config --global user.email
 ```
 
-For this workspace, the known user identity is:
+If either is empty, ask the user for the name and email to use, then set them:
 
 ```bash
-git config --global user.name "Fateorcloud"
-git config --global user.email "1658749123@qq.com"
+git config --global user.name "<name>"
+git config --global user.email "<email>"
 ```
+
+Never invent an identity or carry one over from another repository. If the values are set but look wrong for the GitHub account being pushed to, point out the mismatch and ask before changing anything.
 
 Only change global config when the user asks for setup or when the values are empty/wrong for the requested GitHub account. Tell the user before changing global config because it affects all repositories.
 
@@ -64,13 +66,13 @@ Common public key files include:
 If no suitable key exists and the user wants setup, create one. Prefer modern Ed25519 unless the user explicitly requests RSA:
 
 ```bash
-ssh-keygen -t ed25519 -C "1658749123@qq.com"
+ssh-keygen -t ed25519 -C "$(git config --global user.email)"
 ```
 
 Use RSA only for compatibility with the user's documented setup:
 
 ```bash
-ssh-keygen -t rsa -C "1658749123@qq.com"
+ssh-keygen -t rsa -C "$(git config --global user.email)"
 ```
 
 When prompted for path and passphrase, pressing Enter accepts defaults and can create passwordless SSH login. Do not overwrite an existing key file without explicit confirmation.
