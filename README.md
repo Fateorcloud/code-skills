@@ -20,7 +20,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 <!-- BEGIN:SKILLS -->
 > 本节由 `tools/gen-readme.ps1` 从 `registry.json` 生成，请勿手改。
 
-共 **16** 个技能。作用域 `global` = 装进 `~/.claude/skills` 与 `~/.codex/skills`；`project` = 按需装进单个项目。
+共 **17** 个技能。作用域 `global` = 装进 `~/.claude/skills` 与 `~/.codex/skills`；`project` = 按需装进单个项目。
 
 ### `spec-docs` — 文档体系：术语表 + 决策记录 + 规范同步
 
@@ -28,7 +28,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 |------|--------|------|------|
 | `/adr` | global | claude, codex | 记录一条架构决策。仅当决策"难逆 + 反直觉 + 真权衡"三条同时成立才值得记，默认 1-3 句话。用户做了重大技术/架构决策时使用。 |
 | `/spec-check` | global | claude, codex | 体检文档体系，找出过时、缺失、矛盾的地方。当用户说"检查文档""文档健康度""审查 spec"时使用。只读不改，输出一份问题清单。 |
-| `/spec-init` | global | claude, codex | 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。 |
+| `/spec-init` | global | claude, codex | 为新项目初始化**轻量**文档骨架（CONTEXT.md 术语表 + docs/adr/ 决策记录 + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。若要的是冻结模块/接口/状态归属那套重架构文档，用 /project-architecture-first。 |
 | `/spec-sync` | global | claude, codex | 文档漂移后的兜底追平工具。首选是开发/拷问时内联更新（见 /grill-with-docs）；当你没内联、代码已先行、文档落后了，用本技能把文档追平。 |
 
 ### `thinking` — 想清楚：拷问方案、原型验证
@@ -37,28 +37,29 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 |------|--------|------|------|
 | `/grill-me` | global | claude, codex | 就一个计划或设计反复盘问用户，沿决策树逐个解决依赖，直到达成共识。用户想压测方案、想"被拷问"、说"grill me"时使用。 |
 | `/grill-with-docs` | global | claude, codex | 一边拷问方案、一边对照项目既有领域模型与已记录的决策，磨锐术语，并在决策定型的当下内联更新文档（CONTEXT.md、ADR）。用户想用项目自己的语言和已记录决策来压测方案时使用。 |
-| `/prototype` | global | claude, codex | Build a throwaway prototype to flesh out a design before committing to it. Routes between two branches — a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route. Use when the user wants to prototype, sanity-check a data model or state machine, mock up a UI, explore design options, or says "prototype this", "let me play with it", "try a few designs". |
+| `/prototype` | global | claude, codex | 做一个用完就扔的原型来回答某个设计问题——状态模型/业务逻辑用可运行的终端程序验，界面则做几版差异明显的 UI 切换着看。当用户想验证数据模型或状态机是否顺手、想先看看界面长什么样、说"做个原型""让我玩玩""试几个方案"时使用。 |
 
 ### `coding` — 写码方法论
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
-| `/tdd` | global | claude, codex | Test-driven development with red-green-refactor loop. Use when user wants to build features or fix bugs using TDD, mentions "red-green-refactor", wants integration tests, or asks for test-first development. |
+| `/tdd` | global | claude, codex | 测试驱动开发：红-绿-重构循环，一次交付一个垂直切片。当用户想测试先行地做功能或修 bug、提到"TDD""红绿重构""先写测试"、或要集成测试时使用。 |
 
 ### `architecture` — 架构设计与重构
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
-| `/improve-codebase-architecture` | global | claude, codex | Find deepening opportunities in a codebase, informed by the domain language in CONTEXT.md and the decisions in docs/adr/. Use when the user wants to improve architecture, find refactoring opportunities, consolidate tightly-coupled modules, or make a codebase more testable and AI-navigable. |
-| `/project-architecture-first` | project | claude, codex | use this skill when acting as codex or a coding agent for medium or large software projects, rewrites, refactors, migrations, documentation-heavy builds, or ambiguous feature requests. triggers include requests to start a project, reorganize a repository, split modules, define interfaces, plan implementation, manage shared state, write project docs, or make multi-step code changes. enforce architecture-first planning before implementation: define modules, interfaces, state ownership, test checkpoints, and change reports so each step is reviewable, executable, reversible, and easy for ai agents to continue. |
+| `/codebase-design` | global | claude, codex | 设计深模块的共同词汇：小接口、干净接缝、能透过接口测试。当用户要设计或改进模块接口、找加深机会、决定接缝画在哪、让代码更可测更易被 AI 导航，或别的技能需要"深模块"这套术语时使用。只提供设计词汇与判据；要扫描整个代码库出改进报告用 /improve-codebase-architecture。 |
+| `/improve-codebase-architecture` | global | claude, codex | 扫描代码库找"加深模块"的机会，出一份可视化 HTML 报告，然后就你挑中的那条逐一拷问。当用户想改进架构、找重构机会、合并耦合过紧的模块、让代码更可测更易被 AI 导航时使用。这是针对**既有**代码库的改进；动手前先冻结架构用 /project-architecture-first，只要设计词汇用 /codebase-design。 |
+| `/project-architecture-first` | project | claude, codex | 动手写代码前先冻结架构：定义模块边界、接口契约、状态归属、测试检查点与变更报告，让每一步可审查、可执行、可回滚，也便于 AI 接力。当用户要启动中大型项目、做重写/重构/迁移、重组仓库、拆分模块、定义接口、规划实施步骤、管理共享状态，或提出含糊的大需求时使用。产出的是**架构冻结文档**（PROJECT_ARCHITECTURE / MODULES / INTERFACES / STATE_MODEL / TEST_PLAN）；若只想建术语表和决策记录那套轻量骨架，用 /spec-init。 |
 
 ### `vcs` — 版本控制与仓库工程化
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
-| `/git-guardrails-claude-code` | global | claude, codex | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code. |
-| `/git-push` | global | claude, codex | Use this skill when preparing, verifying, or troubleshooting Git pushes to GitHub over SSH, especially for first-time repository push setup, global Git identity checks, SSH key creation or validation, GitHub SSH key binding, remote URL checks, commit readiness, and safe push commands. |
-| `/setup-pre-commit` | global | claude, codex | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/typechecking/testing. |
+| `/git-guardrails-claude-code` | global | claude, codex | 给 Claude Code 装 hook，在危险 git 命令（push、reset --hard、clean、branch -D 等）执行前就拦下来。当用户想防止破坏性 git 操作、加 git 安全钩子、拦截 git push/reset 时使用。 |
+| `/git-push` | global | claude, codex | 通过 SSH 向 GitHub 推送时的准备、验证与排障。当用户要首次推送仓库、检查 git 全局身份、生成或校验 SSH 密钥、在 GitHub 绑定公钥、确认 remote 是否为 SSH、或说"推上去""push 一下""推不上去""认证失败"时使用。 |
+| `/setup-pre-commit` | global | claude, codex | 在当前仓库配置 Husky pre-commit 钩子：lint-staged（Prettier）+ 类型检查 + 测试。当用户想加 pre-commit 钩子、装 Husky、配 lint-staged、或想在提交时自动跑格式化/类型检查/测试时使用。面向 JS/TS 仓库。 |
 
 ### `continuity` — 跨会话记忆接力
 
@@ -71,7 +72,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 
 | 技能 | 作用域 | 目标 | 说明 |
 |------|--------|------|------|
-| `/avoid-ai-writing` | global | claude, codex | Audit and rewrite content to remove AI writing patterns ("AI-isms"). Use this skill when asked to "remove AI-isms," "clean up AI writing," "edit writing for AI patterns," "audit writing for AI tells," or "make this sound less like AI." Supports a detect-only mode, an edit-in-place mode for files, an optional voice profile (casual / professional / technical / warm / blunt), and an iterate-to-convergence pass. |
+| `/avoid-ai-writing` | global | claude, codex | 审查并改写文稿，去掉 AI 腔（"AI-isms"）。当用户说"去掉 AI 味""这段太像 AI 写的""润色一下别那么机械""检查一下 AI 痕迹""让它读起来像人写的"时使用。支持只检测不改、就地改文件、指定语气（随意/正式/技术/亲切/直白），以及反复迭代到收敛。 |
 <!-- END:SKILLS -->
 
 ## 技能放在哪一层
@@ -143,7 +144,7 @@ junction 对目录**免管理员权限**，不需要开发者模式。装完之�
 ## 仓库结构
 
 ```
-skills/            16 个技能，平铺（agent 的技能目录本身是平的，不认嵌套）
+skills/            17 个技能，平铺（agent 的技能目录本身是平的，不认嵌套）
 registry.json      清单：归类 / 作用域 / 分发目标 / 来源
 install.ps1        junction 分发器
 tools/             README 生成器等
@@ -162,6 +163,20 @@ docs/
 - 递归删除工具可能穿透 junction 删到源。本脚本删链接用 `Directory.Delete($p, $false)`，安全；但别用别的工具递归删 `~/.claude/skills/<name>`。
 - **Cursor 有意不接入**——它用 `~/.cursor/skills-cursor` 并自带 `.sync-manifest.json` 托管同步，硬链进去可能被它的托管逻辑清理。Cursor 侧的技能由它自己管，不纳入本库。
 - `toolkit/` 模板与各 `SKILL.md` 内联的格式要点是**两处**，改模板要记得同步技能。
+
+## 第三方来源与许可
+
+本库部分技能来自开源项目，均保留原作者署名。`registry.json` 的 `source` 字段逐条记录出处、上游 commit 与本地改动范围。
+
+| 上游 | 许可 | 本库技能 | 本地改动 |
+|---|---|---|---|
+| [mattpocock/skills](https://github.com/mattpocock/skills) | MIT | `tdd` `prototype` `codebase-design` `improve-codebase-architecture` `git-guardrails-claude-code` `setup-pre-commit` | **仅 `description` 中文化，正文原样**，便于日后与上游 diff / merge |
+| 同上 | MIT | `grill-me` `grill-with-docs` | 中文改写（含正文）|
+| [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | MIT | `avoid-ai-writing` | 仅 `description` 中文化 |
+
+**同步上游**：`git clone --depth 1 https://github.com/mattpocock/skills`，把对应目录覆盖到 `skills/<name>/`，再重写一遍 `description`。正文保持英文正是为了让这一步只有一行冲突。
+
+已知本地偏离：`tdd/refactoring.md` 是上游已删除但本地保留的重构清单；`improve-codebase-architecture` 移除了上游的 `disable-model-invocation: true`。
 
 ---
 

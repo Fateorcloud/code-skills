@@ -51,25 +51,31 @@
       "category": "thinking",
       "scope": "global",
       "targets": ["claude", "codex"],
-      "source": "https://github.com/mattpocock/skills (2026-06-15 快照)"
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化，正文原样"
     },
     "tdd": {
       "category": "coding",
       "scope": "global",
       "targets": ["claude", "codex"],
-      "source": "https://github.com/mattpocock/skills (2026-06-15 快照，上游已更新)"
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化，正文原样；额外保留上游已删的 refactoring.md"
+    },
+    "codebase-design": {
+      "category": "architecture",
+      "scope": "global",
+      "targets": ["claude", "codex"],
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化，正文原样；承接原 tdd / improve-codebase-architecture 抽出的深模块内容"
+    },
+    "improve-codebase-architecture": {
+      "category": "architecture",
+      "scope": "global",
+      "targets": ["claude", "codex"],
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化并补边界说明，正文原样；已移除上游的 disable-model-invocation"
     },
     "project-architecture-first": {
       "category": "architecture",
       "scope": "project",
       "targets": ["claude", "codex"],
       "source": "原创"
-    },
-    "improve-codebase-architecture": {
-      "category": "architecture",
-      "scope": "global",
-      "targets": ["claude", "codex"],
-      "source": "https://github.com/mattpocock/skills (2026-06-15 快照，上游已更新)"
     },
     "git-push": {
       "category": "vcs",
@@ -81,13 +87,13 @@
       "category": "vcs",
       "scope": "global",
       "targets": ["claude", "codex"],
-      "source": "https://github.com/mattpocock/skills (2026-06-15 快照)"
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化，正文原样"
     },
     "setup-pre-commit": {
       "category": "vcs",
       "scope": "global",
       "targets": ["claude", "codex"],
-      "source": "https://github.com/mattpocock/skills (2026-06-15 快照)"
+      "source": "https://github.com/mattpocock/skills @2ab9580 (2026-07-28)；description 中文化，正文原样"
     },
     "mem-save": {
       "category": "continuity",
@@ -105,7 +111,7 @@
       "category": "writing",
       "scope": "global",
       "targets": ["claude", "codex"],
-      "source": "https://github.com/conorbronsdon/avoid-ai-writing"
+      "source": "https://github.com/conorbronsdon/avoid-ai-writing v3.8.0；description 中文化，正文原样"
     }
   }
 }

@@ -1,8 +1,6 @@
 ---
 name: project-architecture-first
-description: >-
-  use this skill when acting as codex or a coding agent for medium or large software projects, rewrites, refactors, migrations, documentation-heavy builds, or ambiguous feature requests. triggers include requests to start a project, reorganize a repository, split modules, define interfaces, plan implementation, manage shared state, write project docs, or make multi-step code changes. enforce architecture-first planning before implementation: define modules, interfaces, state ownership, test checkpoints, and change reports so each step is reviewable, executable, reversible, and easy for ai agents to continue.
-
+description: 动手写代码前先冻结架构：定义模块边界、接口契约、状态归属、测试检查点与变更报告，让每一步可审查、可执行、可回滚，也便于 AI 接力。当用户要启动中大型项目、做重写/重构/迁移、重组仓库、拆分模块、定义接口、规划实施步骤、管理共享状态，或提出含糊的大需求时使用。产出的是**架构冻结文档**（PROJECT_ARCHITECTURE / MODULES / INTERFACES / STATE_MODEL / TEST_PLAN）；若只想建术语表和决策记录那套轻量骨架，用 /spec-init。
 ---
 
 # Project Architecture First

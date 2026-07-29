@@ -1,6 +1,6 @@
 ---
 name: git-push
-description: Use this skill when preparing, verifying, or troubleshooting Git pushes to GitHub over SSH, especially for first-time repository push setup, global Git identity checks, SSH key creation or validation, GitHub SSH key binding, remote URL checks, commit readiness, and safe push commands.
+description: 通过 SSH 向 GitHub 推送时的准备、验证与排障。当用户要首次推送仓库、检查 git 全局身份、生成或校验 SSH 密钥、在 GitHub 绑定公钥、确认 remote 是否为 SSH、或说"推上去""push 一下""推不上去""认证失败"时使用。
 ---
 
 # Git Push

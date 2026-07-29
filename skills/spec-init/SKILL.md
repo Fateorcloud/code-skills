@@ -1,6 +1,6 @@
 ---
 name: spec-init
-description: 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。
+description: 为新项目初始化**轻量**文档骨架（CONTEXT.md 术语表 + docs/adr/ 决策记录 + CLAUDE.md 或 AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。若要的是冻结模块/接口/状态归属那套重架构文档，用 /project-architecture-first。
 ---
 
 # spec-init — 项目文档骨架初始化
