@@ -1,6 +1,6 @@
 # code-skills
 
-Austin W / CARROT 的 AI 编程技能库。**真相源只有一份**——本仓库的 `skills/`，用 Windows junction 链接到各 agent 的技能目录，一致性由文件系统保证，不靠人工同步。
+AI 编程技能库。**真相源只有一份**——本仓库的 `skills/`，用 Windows junction 链接到各 agent 的技能目录，一致性由文件系统保证，不靠人工同步。
 
 设计依据见 [ADR 0004](docs/adr/0004-single-source-junction.md)。
 
