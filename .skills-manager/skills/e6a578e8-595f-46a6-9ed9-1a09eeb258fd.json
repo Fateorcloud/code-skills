@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "e6a578e8-595f-46a6-9ed9-1a09eeb258fd",
+  "path": "volans-notes-solve-to-article",
+  "path_key": "volans-notes-solve-to-article",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "9df9d2a5-4017-4190-9984-463edd9c6def",
+  "path": "gsap-utils",
+  "path_key": "gsap-utils",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

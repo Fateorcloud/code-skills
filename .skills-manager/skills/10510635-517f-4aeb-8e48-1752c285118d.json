@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "10510635-517f-4aeb-8e48-1752c285118d",
+  "path": "volans-notes-resource-to-article",
+  "path_key": "volans-notes-resource-to-article",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

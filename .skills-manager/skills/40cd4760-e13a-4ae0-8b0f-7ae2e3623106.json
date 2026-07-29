@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "40cd4760-e13a-4ae0-8b0f-7ae2e3623106",
+  "path": "skills/adr",
+  "path_key": "skills/adr",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

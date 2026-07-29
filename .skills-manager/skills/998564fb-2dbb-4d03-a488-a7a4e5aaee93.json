@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "998564fb-2dbb-4d03-a488-a7a4e5aaee93",
+  "path": "skills/mem-save",
+  "path_key": "skills/mem-save",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

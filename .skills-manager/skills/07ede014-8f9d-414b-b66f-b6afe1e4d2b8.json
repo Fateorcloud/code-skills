@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "07ede014-8f9d-414b-b66f-b6afe1e4d2b8",
+  "path": "skills/spec-check",
+  "path_key": "skills/spec-check",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

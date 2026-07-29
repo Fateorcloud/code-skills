@@ -1,0 +1,4 @@
+interface:
+  display_name: "Volans Notes Solve-To-Article"
+  short_description: "Turn conversation knowledge into a reviewed Volans Notes article."
+  default_prompt: "Use $volans-notes-solve-to-article to turn this conversation into a reviewable Volans Notes draft."

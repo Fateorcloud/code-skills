@@ -1,0 +1,4 @@
+interface:
+  display_name: "Volans Notes Resource-To-Article"
+  short_description: "Turn supplied resources into reviewed Volans Notes articles."
+  default_prompt: "Use $volans-notes-resource-to-article to turn these resources into a reviewable Volans Notes draft."

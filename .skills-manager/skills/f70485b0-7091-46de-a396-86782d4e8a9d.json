@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "f70485b0-7091-46de-a396-86782d4e8a9d",
+  "path": "skills/spec-sync",
+  "path_key": "skills/spec-sync",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

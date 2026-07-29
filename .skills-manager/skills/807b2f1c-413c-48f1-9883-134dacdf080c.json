@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "807b2f1c-413c-48f1-9883-134dacdf080c",
+  "path": "skills/git-push",
+  "path_key": "skills/git-push",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

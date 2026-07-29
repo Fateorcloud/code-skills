@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "79847d58-5dff-424b-af6a-417ae7031973",
+  "path": "skills/project-architecture-first",
+  "path_key": "skills/project-architecture-first",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

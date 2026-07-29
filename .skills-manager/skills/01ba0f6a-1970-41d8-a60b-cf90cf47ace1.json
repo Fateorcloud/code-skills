@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "01ba0f6a-1970-41d8-a60b-cf90cf47ace1",
+  "path": "skills/mem-load",
+  "path_key": "skills/mem-load",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}

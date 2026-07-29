@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "skill_id": "5473ab95-32f2-43da-8ff1-ba7a029d5c8f",
+  "path": "skills/avoid-ai-writing",
+  "path_key": "skills/avoid-ai-writing",
+  "enabled": true,
+  "tags": [],
+  "source": {
+    "type": "import",
+    "ref": null,
+    "subpath": null,
+    "branch": null
+  }
+}
