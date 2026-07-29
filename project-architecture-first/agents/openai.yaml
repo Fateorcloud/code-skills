@@ -1,3 +1,0 @@
-interface:
-  display_name: "Project Architecture First"
-  short_description: "Plan large Codex projects with modules, interfaces, state, tests, and change reports before implementation."
