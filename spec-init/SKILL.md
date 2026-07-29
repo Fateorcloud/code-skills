@@ -1,6 +1,6 @@
 ---
 name: spec-init
-description: 为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。
+description: 【旧版·请删除】为新项目初始化文档骨架（CONTEXT.md + docs/adr/ + AGENTS.md）。当用户说"初始化 spec""搭建文档体系""新项目开始"时使用。
 ---
 
 # spec-init — 项目文档骨架初始化
